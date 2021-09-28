@@ -1,4 +1,4 @@
-package com.xiao.service;
+package com.xiao.impl;
 
 import com.xiao.common.Result;
 import com.xiao.infrastructure.dao.IActivityDao;
