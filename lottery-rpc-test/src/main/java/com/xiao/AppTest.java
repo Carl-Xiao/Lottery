@@ -11,5 +11,4 @@ public class AppTest {
     public static void main(String[] args) {
         SpringApplication.run(AppTest.class, args);
     }
-
 }
