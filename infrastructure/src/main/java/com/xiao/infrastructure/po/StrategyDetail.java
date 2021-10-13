@@ -30,4 +30,6 @@ public class StrategyDetail {
 
     // 修改时间
     private String updateTime;
+
+    private Integer awardSurplusCount;
 }

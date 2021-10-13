@@ -1,0 +1,26 @@
+package com.xiao.domain.award.service.goods.imp;
+
+import com.xiao.common.Constants;
+import com.xiao.domain.award.model.req.GoodsReq;
+import com.xiao.domain.award.model.res.DistributionRes;
+import com.xiao.domain.award.service.goods.DistributionBase;
+import com.xiao.domain.award.service.goods.IDistributionGoods;
+import org.springframework.stereotype.Component;
+
+/**
+ * @description: 描述类商品，以文字形式展示给用户
+ * @author：Carl-Xiao
+ * @date: 2021/10/13
+ */
+@Component
+public class DescGoods extends DistributionBase implements IDistributionGoods {
+
+    @Override
+    public DistributionRes doDistribution(GoodsReq req) {
+        logger.info("描述类商品 uId：{} awardContent：{}", req.getuId(), req.getAwardContent());
+
+        super.updateUserAwardState(req.getuId(), req.getOrderId(), req.getAwardId(), Constants.AwardState.SUCCESS.getCode(), Constants.AwardState.SUCCESS.getInfo());
+
+        return new DistributionRes(req.getuId(), Constants.AwardState.SUCCESS.getCode(), Constants.AwardState.SUCCESS.getInfo());
+    }
+}
