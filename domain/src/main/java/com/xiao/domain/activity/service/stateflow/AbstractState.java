@@ -1,7 +1,10 @@
-package com.xiao.domain.activity.service;
+package com.xiao.domain.activity.service.stateflow;
 
 import com.xiao.common.Constants;
 import com.xiao.common.Result;
+import com.xiao.domain.activity.repository.IActivityRepository;
+
+import javax.annotation.Resource;
 
 /**
  * @description: 活动状态抽象类
@@ -10,6 +13,9 @@ import com.xiao.common.Result;
  */
 public abstract class AbstractState {
 
+
+    @Resource
+    protected IActivityRepository activityRepository;
     /**
      * 活动提审
      * @param activityId 活动ID

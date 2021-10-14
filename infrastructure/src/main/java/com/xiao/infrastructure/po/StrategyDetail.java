@@ -32,4 +32,8 @@ public class StrategyDetail {
     private String updateTime;
 
     private Integer awardSurplusCount;
+    /**
+     * 奖品名称
+     */
+    private String awardName;
 }

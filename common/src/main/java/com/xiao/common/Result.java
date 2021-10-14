@@ -29,6 +29,9 @@ public class Result implements Serializable {
     public static Result buildErrorResult() {
         return new Result(Constants.ResponseCode.UN_ERROR.getCode(), Constants.ResponseCode.UN_ERROR.getInfo());
     }
+    public static Result buildErrorResult(String info) {
+        return new Result(Constants.ResponseCode.UN_ERROR.getCode(), info);
+    }
 
 
 }
