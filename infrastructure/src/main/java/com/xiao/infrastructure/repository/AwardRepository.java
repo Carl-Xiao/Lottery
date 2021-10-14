@@ -1,4 +1,4 @@
-package com.xiao.domain.award.repository.imp;
+package com.xiao.infrastructure.repository;
 
 import com.xiao.domain.award.repository.IAwardRepository;
 import org.springframework.stereotype.Component;

@@ -1,8 +1,8 @@
 package com.xiao.domain.strategy.service.draw;
 
 import com.xiao.domain.strategy.model.aggregates.StrategyRich;
+import com.xiao.domain.strategy.model.vo.AwardBriefVO;
 import com.xiao.domain.strategy.repository.IStrategyRepository;
-import com.xiao.infrastructure.po.Award;
 
 import javax.annotation.Resource;
 
@@ -29,7 +29,7 @@ public class DrawStrategySupport extends DrawConfig{
      * @param awardId
      * @return
      */
-    protected Award queryAwardInfoByAwardId(String awardId){
+    protected AwardBriefVO queryAwardInfoByAwardId(String awardId){
         return strategyRepository.queryAwardInfo(awardId);
     }
 

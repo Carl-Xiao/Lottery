@@ -18,6 +18,9 @@ public class Result implements Serializable {
         return new Result(code, info);
     }
 
+    public static Result buildResult(Constants.ResponseCode code, String info) {
+        return new Result(code.getCode(), info);
+    }
 
     public static Result buildSuccessResult() {
         return new Result(Constants.ResponseCode.SUCCESS.getCode(), Constants.ResponseCode.SUCCESS.getInfo());

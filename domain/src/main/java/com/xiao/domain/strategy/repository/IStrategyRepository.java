@@ -1,7 +1,7 @@
 package com.xiao.domain.strategy.repository;
 
 import com.xiao.domain.strategy.model.aggregates.StrategyRich;
-import com.xiao.infrastructure.po.Award;
+import com.xiao.domain.strategy.model.vo.AwardBriefVO;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public interface IStrategyRepository {
 
     StrategyRich queryStrategyRich(Long strategyId);
 
-    Award queryAwardInfo(String awardId);
+    AwardBriefVO queryAwardInfo(String awardId);
 
     List<String> queryNoStockStrategyAwardList(Long strategyId);
 

@@ -1,23 +1,30 @@
 package com.xiao.domain.strategy.model.aggregates;
 
 
-
-import com.xiao.infrastructure.po.Strategy;
-import com.xiao.infrastructure.po.StrategyDetail;
-import lombok.AllArgsConstructor;
+import com.xiao.domain.strategy.model.vo.StrategyBriefVO;
+import com.xiao.domain.strategy.model.vo.StrategyDetailBriefVO;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class StrategyRich {
     // 策略ID
     private Long strategyId;
-    // 策略配置
-    private Strategy strategy;
-    // 策略明细
-    private List<StrategyDetail> strategyDetailList;
+
+    //策略配置
+    private StrategyBriefVO strategy;
+    /**
+     * 策略明细
+     */
+    private List<StrategyDetailBriefVO> strategyDetailList;
+    public StrategyRich() {
+    }
+
+    public StrategyRich(Long strategyId, StrategyBriefVO strategy, List<StrategyDetailBriefVO> strategyDetailList) {
+        this.strategyId = strategyId;
+        this.strategy = strategy;
+        this.strategyDetailList = strategyDetailList;
+    }
+
 }
