@@ -30,4 +30,12 @@ public class Activity {
     private Date createTime;
     //修改时间
     private Date updateTime;
+    /**
+     * 库存剩余
+     */
+    private Integer stockSurplusCount;
+    /**
+     * 策略ID
+     */
+    private Long strategyId;
 }

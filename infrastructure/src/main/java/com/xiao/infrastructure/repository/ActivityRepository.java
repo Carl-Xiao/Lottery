@@ -1,16 +1,11 @@
 package com.xiao.infrastructure.repository;
 
 import com.xiao.common.Constants;
+import com.xiao.domain.activity.model.req.PartakeReq;
 import com.xiao.domain.activity.model.vo.*;
 import com.xiao.domain.activity.repository.IActivityRepository;
-import com.xiao.infrastructure.dao.IActivityDao;
-import com.xiao.infrastructure.dao.IAwardDao;
-import com.xiao.infrastructure.dao.IStrategyDao;
-import com.xiao.infrastructure.dao.IStrategyDetailDao;
-import com.xiao.infrastructure.po.Activity;
-import com.xiao.infrastructure.po.Award;
-import com.xiao.infrastructure.po.Strategy;
-import com.xiao.infrastructure.po.StrategyDetail;
+import com.xiao.infrastructure.dao.*;
+import com.xiao.infrastructure.po.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Repository;
 
@@ -37,6 +32,10 @@ public class ActivityRepository implements IActivityRepository {
 
     @Resource
     IStrategyDetailDao strategyDetailDao;
+
+    @Resource
+    private IUserTakeActivityCountDao userTakeActivityCountDao;
+
 
     @Override
     public boolean alterStatus(Long activityId, Enum<Constants.ActivityState> beforeState, Constants.ActivityState afterState) {
@@ -82,5 +81,34 @@ public class ActivityRepository implements IActivityRepository {
         strategyDetailDao.insertList(req);
     }
 
+    @Override
+    public ActivityBillVO queryActivityBill(PartakeReq req) {
+        // 查询活动信息
+        Activity activity = iActivityDao.queryActivityById(req.getActivityId());
+        // 查询领取次数
+        UserTakeActivityCount userTakeActivityCountReq = new UserTakeActivityCount();
+        userTakeActivityCountReq.setuId(req.getuId());
+        userTakeActivityCountReq.setActivityId(req.getActivityId());
+        UserTakeActivityCount userTakeActivityCount = userTakeActivityCountDao.queryUserTakeActivityCount(userTakeActivityCountReq);
 
+        // 封装结果信息
+        ActivityBillVO activityBillVO = new ActivityBillVO();
+        activityBillVO.setuId(req.getuId());
+        activityBillVO.setActivityId(req.getActivityId());
+        activityBillVO.setActivityName(activity.getActivityName());
+        activityBillVO.setBeginDateTime(activity.getBeginDateTime());
+        activityBillVO.setEndDateTime(activity.getEndDateTime());
+        activityBillVO.setTakeCount(activity.getTakeCount());
+        activityBillVO.setStockSurplusCount(activity.getStockSurplusCount());
+        activityBillVO.setStrategyId(activity.getStrategyId());
+        activityBillVO.setState(activity.getState());
+        activityBillVO.setUserTakeLeftCount(null == userTakeActivityCount ? null : userTakeActivityCount.getLeftCount());
+
+        return activityBillVO;
+    }
+
+    @Override
+    public int subtractionActivityStock(Long activityId) {
+        return iActivityDao.subtractionActivityStock(activityId);
+    }
 }

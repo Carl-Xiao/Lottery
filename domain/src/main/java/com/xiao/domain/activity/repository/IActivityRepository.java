@@ -1,10 +1,8 @@
 package com.xiao.domain.activity.repository;
 
 import com.xiao.common.Constants;
-import com.xiao.domain.activity.model.vo.ActivityVO;
-import com.xiao.domain.activity.model.vo.AwardVO;
-import com.xiao.domain.activity.model.vo.StrategyDetailVO;
-import com.xiao.domain.activity.model.vo.StrategyVO;
+import com.xiao.domain.activity.model.req.PartakeReq;
+import com.xiao.domain.activity.model.vo.*;
 
 import java.util.List;
 
@@ -35,4 +33,8 @@ public interface IActivityRepository {
     void addStrategy(StrategyVO strategy);
 
     void addStrategyDetailList(List<StrategyDetailVO> strategyDetailList);
+
+    ActivityBillVO queryActivityBill(PartakeReq req);
+
+    int subtractionActivityStock(Long activityId);
 }
