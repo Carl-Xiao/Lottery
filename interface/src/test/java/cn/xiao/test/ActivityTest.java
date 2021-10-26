@@ -5,11 +5,14 @@ import com.xiao.App;
 import com.xiao.common.Constants;
 import com.xiao.domain.activity.model.aggregates.ActivityConfigRich;
 import com.xiao.domain.activity.model.req.ActivityConfigReq;
+import com.xiao.domain.activity.model.req.PartakeReq;
+import com.xiao.domain.activity.model.res.PartakeResult;
 import com.xiao.domain.activity.model.vo.ActivityVO;
 import com.xiao.domain.activity.model.vo.AwardVO;
 import com.xiao.domain.activity.model.vo.StrategyDetailVO;
 import com.xiao.domain.activity.model.vo.StrategyVO;
 import com.xiao.domain.activity.service.deploy.IActivityDeploy;
+import com.xiao.domain.activity.service.partake.IActivityPartake;
 import com.xiao.domain.activity.service.stateflow.IStateHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -39,6 +42,9 @@ public class ActivityTest {
 
     @Resource
     private IStateHandler stateHandler;
+
+    @Resource
+    private IActivityPartake activityPartake;
 
     private ActivityConfigRich activityConfigRich;
     private Long activityId = 120981321L;
@@ -170,6 +176,11 @@ public class ActivityTest {
         log.info("二次提审，测试：{}", JSON.toJSONString(stateHandler.checkPass(100001L, Constants.ActivityState.EDIT)));
     }
 
-
-
+    @Test
+    public void test_activityPartake() {
+        PartakeReq req = new PartakeReq("Uhdgkw766120d", 100001L);
+        PartakeResult res = activityPartake.doPartake(req);
+        log.info("请求参数：{}", JSON.toJSONString(req));
+        log.info("测试结果：{}", JSON.toJSONString(res));
+    }
 }
