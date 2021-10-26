@@ -1,5 +1,8 @@
 package com.xiao.domain.activity.repository;
 
+import com.xiao.domain.activity.model.vo.DrawOrderVO;
+import com.xiao.domain.activity.model.vo.UserTakeActivityVO;
+
 import java.util.Date;
 
 /**
@@ -34,4 +37,17 @@ public interface IUserTakeActivityRepository {
      */
     void takeActivity(Long activityId, String activityName, Integer takeCount, Integer userTakeLeftCount, String uId, Date takeDate, Long takeId);
 
+    UserTakeActivityVO queryNoConsumedTakeActivityOrder(Long activityId, String uId);
+
+    /**
+     * 锁定活动领取记录
+     *
+     * @param uId        用户ID
+     * @param activityId 活动ID
+     * @param takeId     领取ID
+     * @return 更新结果
+     */
+    int lockTackActivity(String uId, Long activityId, Long takeId);
+
+    void saveUserStrategyExport(DrawOrderVO drawOrder);
 }

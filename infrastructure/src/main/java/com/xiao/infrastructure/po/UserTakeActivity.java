@@ -1,5 +1,7 @@
 package com.xiao.infrastructure.po;
 
+import lombok.Data;
+
 import java.util.Date;
 
 /**
@@ -9,8 +11,8 @@ import java.util.Date;
  * @github: https://github.com/fuzhengwei
  * @Copyright: 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
+@Data
 public class UserTakeActivity {
-
     /**
      * 自增ID
      */
@@ -52,84 +54,14 @@ public class UserTakeActivity {
      */
     private Date updateTime;
 
+    /**
+     * 策略ID
+     */
+    private Long strategyId;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getuId() {
-        return uId;
-    }
-
-    public void setuId(String uId) {
-        this.uId = uId;
-    }
-
-    public Long getTakeId() {
-        return takeId;
-    }
-
-    public void setTakeId(Long takeId) {
-        this.takeId = takeId;
-    }
-
-    public Long getActivityId() {
-        return activityId;
-    }
-
-    public void setActivityId(Long activityId) {
-        this.activityId = activityId;
-    }
-
-    public String getActivityName() {
-        return activityName;
-    }
-
-    public void setActivityName(String activityName) {
-        this.activityName = activityName;
-    }
-
-    public Date getTakeDate() {
-        return takeDate;
-    }
-
-    public void setTakeDate(Date takeDate) {
-        this.takeDate = takeDate;
-    }
-
-    public Integer getTakeCount() {
-        return takeCount;
-    }
-
-    public void setTakeCount(Integer takeCount) {
-        this.takeCount = takeCount;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
+    /**
+     * 活动单使用状态 0未使用、1已使用
+     * Constants.TaskState
+     */
+    private Integer state;
 }

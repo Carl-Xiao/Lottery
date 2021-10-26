@@ -21,4 +21,15 @@ public interface IUserTakeActivityDao {
      */
     @DBRouter(key = "uId")
     void insert(UserTakeActivity userTakeActivity);
+
+    @DBRouter
+    UserTakeActivity queryNoConsumedTakeActivityOrder(UserTakeActivity userTakeActivity);
+
+    /**
+     * 锁定活动领取记录
+     *
+     * @param userTakeActivity  入参
+     * @return                  更新结果
+     */
+    int lockTackActivity(UserTakeActivity userTakeActivity);
 }

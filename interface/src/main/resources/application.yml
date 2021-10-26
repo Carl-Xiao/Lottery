@@ -41,14 +41,16 @@ mini-db-router:
 
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
-#  config-location:  classpath:/mybatis/config/mybatis-config.xml
+#  config-location:  classpath:/config/mybatis-config.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 # Dubbo 广播方式配置
 dubbo:
   application:
     name: provider-service
   registry:
-    address: nacos://192.168.2.54:8848
+    address: nacos://127.0.0.1:8848
     username: nacos
     password: nacos
   scan:

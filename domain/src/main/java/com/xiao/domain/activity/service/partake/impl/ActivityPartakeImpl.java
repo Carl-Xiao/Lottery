@@ -4,6 +4,7 @@ import com.xiao.common.Constants;
 import com.xiao.common.Result;
 import com.xiao.domain.activity.model.req.PartakeReq;
 import com.xiao.domain.activity.model.vo.ActivityBillVO;
+import com.xiao.domain.activity.model.vo.UserTakeActivityVO;
 import com.xiao.domain.activity.repository.IUserTakeActivityRepository;
 import com.xiao.domain.activity.service.partake.BaseActivityPartake;
 import com.xiao.domain.support.IIdGenerator;
@@ -39,6 +40,11 @@ public class ActivityPartakeImpl extends BaseActivityPartake {
     @Resource
     private Map<Constants.Ids, IIdGenerator> idGeneratorMap;
 
+
+    @Override
+    protected UserTakeActivityVO queryNoConsumedTakeActivityOrder(Long activityId, String uId) {
+        return userTakeActivityRepository.queryNoConsumedTakeActivityOrder(activityId, uId);
+    }
 
     @Override
     protected Result checkActivityBill(PartakeReq partake, ActivityBillVO bill) {
