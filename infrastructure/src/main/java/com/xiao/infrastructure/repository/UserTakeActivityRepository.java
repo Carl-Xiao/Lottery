@@ -54,7 +54,7 @@ public class UserTakeActivityRepository implements IUserTakeActivityRepository {
     @Override
     public void takeActivity(Long activityId, String activityName, Integer takeCount, Integer userTakeLeftCount, String uId, Date takeDate, Long takeId) {
         UserTakeActivity userTakeActivity = new UserTakeActivity();
-        userTakeActivity.setUId(uId);
+        userTakeActivity.setuId(uId);
         userTakeActivity.setTakeId(takeId);
         userTakeActivity.setActivityId(activityId);
         userTakeActivity.setActivityName(activityName);
@@ -73,7 +73,7 @@ public class UserTakeActivityRepository implements IUserTakeActivityRepository {
     @Override
     public UserTakeActivityVO queryNoConsumedTakeActivityOrder(Long activityId, String uId) {
         UserTakeActivity userTakeActivity = new UserTakeActivity();
-        userTakeActivity.setUId(uId);
+        userTakeActivity.setuId(uId);
         userTakeActivity.setActivityId(activityId);
         UserTakeActivity noConsumedTakeActivityOrder = userTakeActivityDao.queryNoConsumedTakeActivityOrder(userTakeActivity);
 
@@ -94,7 +94,7 @@ public class UserTakeActivityRepository implements IUserTakeActivityRepository {
     @Override
     public int lockTackActivity(String uId, Long activityId, Long takeId) {
         UserTakeActivity userTakeActivity = new UserTakeActivity();
-        userTakeActivity.setUId(uId);
+        userTakeActivity.setuId(uId);
         userTakeActivity.setActivityId(activityId);
         userTakeActivity.setTakeId(takeId);
         return userTakeActivityDao.lockTackActivity(userTakeActivity);

@@ -24,13 +24,11 @@ import javax.annotation.Resource;
 public abstract class BaseActivityPartake extends ActivityPartakeSupport implements IActivityPartake{
     @Override
     public PartakeResult doPartake(PartakeReq req) {
-
         // 1. 查询是否存在未执行抽奖领取活动单【user_take_activity 存在 state = 0，领取了但抽奖过程失败的，可以直接返回领取结果继续抽奖】
         UserTakeActivityVO userTakeActivityVO = this.queryNoConsumedTakeActivityOrder(req.getActivityId(), req.getuId());
         if (null != userTakeActivityVO) {
             return buildPartakeResult(userTakeActivityVO.getStrategyId(), userTakeActivityVO.getTakeId());
         }
-
         // 查询活动账单
         ActivityBillVO activityBillVO = super.queryActivityBill(req);
 
