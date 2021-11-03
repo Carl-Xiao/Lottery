@@ -1,0 +1,54 @@
+package com.xiao.domain.rule.service.logic;
+
+import com.xiao.common.Constants;
+import com.xiao.domain.rule.model.req.DecisionMatterReq;
+import com.xiao.domain.rule.model.vo.TreeNodeLineVO;
+
+import java.util.List;
+
+/**
+ * @description: 规则基础抽象类
+ * @author：Carl-Xiao
+ * @date: 2021/11/3
+ */
+public abstract class BaseLogic implements LogicFilter{
+
+    @Override
+    public Long filter(String matterValue, List<TreeNodeLineVO> treeNodeLineInfoList) {
+        for (TreeNodeLineVO nodeLine : treeNodeLineInfoList) {
+            if (decisionLogic(matterValue, nodeLine)) {
+                return nodeLine.getNodeIdTo();
+            }
+        }
+        return 0L;
+    }
+
+    @Override
+    public abstract String matterValue(DecisionMatterReq decisionMatter) ;
+
+
+    /**
+     * 决策树引擎
+     * @param matterValue
+     * @param nodeLine
+     * @return
+     */
+    private boolean decisionLogic(String matterValue, TreeNodeLineVO nodeLine) {
+        switch (nodeLine.getRuleLimitType()) {
+            case Constants.RuleLimitType.EQUAL:
+                return matterValue.equals(nodeLine.getRuleLimitValue());
+            case Constants.RuleLimitType.GT:
+                return Double.parseDouble(matterValue) > Double.parseDouble(nodeLine.getRuleLimitValue());
+            case Constants.RuleLimitType.LT:
+                return Double.parseDouble(matterValue) < Double.parseDouble(nodeLine.getRuleLimitValue());
+            case Constants.RuleLimitType.GE:
+                return Double.parseDouble(matterValue) >= Double.parseDouble(nodeLine.getRuleLimitValue());
+            case Constants.RuleLimitType.LE:
+                return Double.parseDouble(matterValue) <= Double.parseDouble(nodeLine.getRuleLimitValue());
+            default:
+                return false;
+        }
+    }
+
+
+}
