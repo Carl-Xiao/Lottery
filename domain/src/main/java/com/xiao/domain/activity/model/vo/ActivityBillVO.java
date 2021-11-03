@@ -1,5 +1,7 @@
 package com.xiao.domain.activity.model.vo;
 
+import lombok.Data;
+
 import java.util.Date;
 
 /**
@@ -9,8 +11,8 @@ import java.util.Date;
  * @github: https://github.com/fuzhengwei
  * @Copyright: 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
+@Data
 public class ActivityBillVO {
-
     /** 用户ID */
     private String uId;
 
@@ -31,91 +33,10 @@ public class ActivityBillVO {
     private Integer state;
     /** 策略ID */
     private Long strategyId;
-
     /** 每人可参与次数 */
     private Integer takeCount;
     /** 已领取次数 */
     private Integer userTakeLeftCount;
-
-    public String getuId() {
-        return uId;
-    }
-
-    public void setuId(String uId) {
-        this.uId = uId;
-    }
-
-    public Long getActivityId() {
-        return activityId;
-    }
-
-    public void setActivityId(Long activityId) {
-        this.activityId = activityId;
-    }
-
-    public String getActivityName() {
-        return activityName;
-    }
-
-    public void setActivityName(String activityName) {
-        this.activityName = activityName;
-    }
-
-    public Date getBeginDateTime() {
-        return beginDateTime;
-    }
-
-    public void setBeginDateTime(Date beginDateTime) {
-        this.beginDateTime = beginDateTime;
-    }
-
-    public Date getEndDateTime() {
-        return endDateTime;
-    }
-
-    public void setEndDateTime(Date endDateTime) {
-        this.endDateTime = endDateTime;
-    }
-
-    public Integer getStockSurplusCount() {
-        return stockSurplusCount;
-    }
-
-    public void setStockSurplusCount(Integer stockSurplusCount) {
-        this.stockSurplusCount = stockSurplusCount;
-    }
-
-    public Integer getState() {
-        return state;
-    }
-
-    public void setState(Integer state) {
-        this.state = state;
-    }
-
-    public Long getStrategyId() {
-        return strategyId;
-    }
-
-    public void setStrategyId(Long strategyId) {
-        this.strategyId = strategyId;
-    }
-
-    public Integer getTakeCount() {
-        return takeCount;
-    }
-
-    public void setTakeCount(Integer takeCount) {
-        this.takeCount = takeCount;
-    }
-
-    public Integer getUserTakeLeftCount() {
-        return userTakeLeftCount;
-    }
-
-    public void setUserTakeLeftCount(Integer userTakeLeftCount) {
-        this.userTakeLeftCount = userTakeLeftCount;
-    }
 
     @Override
     public String toString() {

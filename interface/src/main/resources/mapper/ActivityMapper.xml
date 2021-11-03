@@ -15,6 +15,7 @@
         <result column="creator" property="creator"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
+        <result column="stock_surplus_count" property="stockSurplusCount"/>
     </resultMap>
 
     <insert id="insert" parameterType="com.xiao.infrastructure.po.Activity">

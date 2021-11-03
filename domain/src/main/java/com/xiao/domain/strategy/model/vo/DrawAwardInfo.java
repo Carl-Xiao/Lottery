@@ -1,13 +1,17 @@
 package com.xiao.domain.strategy.model.vo;
 
+import lombok.Data;
+
+import java.util.Date;
+
 /**
  * @description: 中奖奖品信息
  * @author：小傅哥，微信：fustack
  * @date: 2021/8/28
  * @Copyright： 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
+@Data
 public class DrawAwardInfo {
-
     /**
      * 奖品ID
      */
@@ -28,6 +32,20 @@ public class DrawAwardInfo {
      */
     private String awardContent;
 
+    /**
+     * 策略方式（1:单项概率、2:总体概率）
+     */
+    private Integer strategyMode;
+
+    /**
+     * 发放奖品方式（1:即时、2:定时[含活动结束]、3:人工）
+     */
+    private Integer grantType;
+    /**
+     * 发奖时间
+     */
+    private Date grantDate;
+
     public DrawAwardInfo() {
     }
 
@@ -37,37 +55,4 @@ public class DrawAwardInfo {
         this.awardName = awardName;
         this.awardContent = awardContent;
     }
-
-    public String getAwardId() {
-        return awardId;
-    }
-
-    public void setAwardId(String awardId) {
-        this.awardId = awardId;
-    }
-
-    public Integer getAwardType() {
-        return awardType;
-    }
-
-    public void setAwardType(Integer awardType) {
-        this.awardType = awardType;
-    }
-
-    public String getAwardName() {
-        return awardName;
-    }
-
-    public void setAwardName(String awardName) {
-        this.awardName = awardName;
-    }
-
-    public String getAwardContent() {
-        return awardContent;
-    }
-
-    public void setAwardContent(String awardContent) {
-        this.awardContent = awardContent;
-    }
-
 }

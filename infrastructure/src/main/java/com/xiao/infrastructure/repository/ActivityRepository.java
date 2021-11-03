@@ -93,7 +93,7 @@ public class ActivityRepository implements IActivityRepository {
 
         // 封装结果信息
         ActivityBillVO activityBillVO = new ActivityBillVO();
-        activityBillVO.setuId(req.getuId());
+        activityBillVO.setUId(req.getuId());
         activityBillVO.setActivityId(req.getActivityId());
         activityBillVO.setActivityName(activity.getActivityName());
         activityBillVO.setBeginDateTime(activity.getBeginDateTime());
